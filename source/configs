@@ -1,0 +1,29 @@
+# Dataset configuration
+data_path: "datasets/kitti360"
+batch_size: 4                      
+frames: 16                         
+
+# Model configuration
+vocab_size: 10000
+embed_dim: 256
+special_token_id: 9999
+token_prompt: "A 360 degree view"
+lambda_img: 1.0
+lr: 1e-4
+epochs: 10
+latent_dim: 256                   
+model_key: "stabilityai/stable-diffusion-2-base"  
+lora_path: "checkpoints/lora/panoramic_lora"
+
+# Evaluation configuration
+metrics:
+  clip: true
+  inception: true
+  fvd: true
+  fid: true
+
+# Pretrained models for metrics
+vidgen_checkpoint: "checkpoints/panoramic_model_stage1_final.pt"
+i3d_model_path: "checkpoints/i3d.pt"   
+inception_model: "torchvision.models.inception_v3" 
+clip_model: "openai/clip-vit-base-patch32"
